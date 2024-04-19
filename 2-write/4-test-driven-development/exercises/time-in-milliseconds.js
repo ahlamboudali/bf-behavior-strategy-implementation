@@ -18,4 +18,10 @@
  *
  * timeInMilliseconds(0, 1, 1); // 61000
  */
-export const timeInMilliseconds = (h = 0, m = 0, s = 0) => {};
+export const timeInMilliseconds = (h = 0, m = 0, s = 0) => {
+    if (h < 0 || h > 23 || m < 0 || m > 59 || s < 0 || s > 59) {
+        throw new Error('Invalid time format');
+    }
+
+    return ((h * 3600) + (m * 60) + s) * 1000;
+};
