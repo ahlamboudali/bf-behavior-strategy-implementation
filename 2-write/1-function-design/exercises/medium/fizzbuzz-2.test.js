@@ -16,12 +16,19 @@
 // -------- your solutions --------
 
 const whileLoop = (max) => {
-    let countUp = _;
+    let countUp = 0;
     const result = [];
-    while (_) {
+    while (countUp < max) {
         const nextEntry =
-            countUp % 15 === 0 ? '_' : _ ? 'buzz' : _ ? 'fizz' : _;
+            countUp % 15 === 0
+                ? 'fizzbuzz'
+                : countUp % 3 === 0
+                ? 'fizz'
+                : countUp % 5 === 0
+                ? 'buzz'
+                : countUp;
         result.push(nextEntry);
+        countUp++;
     }
     return result;
 };

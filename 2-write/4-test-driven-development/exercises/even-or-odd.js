@@ -10,4 +10,10 @@
  *
  * evenOrOdd([1, 2]); // ['odd', 'even']
  */
-export const evenOrOdd = (nums = []) => {};
+export const evenOrOdd = (nums = []) => {
+    // Map through each number in the nums array
+    return nums.map(num => {
+        // Check if the number is even or odd
+        return num % 2 === 0 ? 'even' : 'odd';
+    });
+};

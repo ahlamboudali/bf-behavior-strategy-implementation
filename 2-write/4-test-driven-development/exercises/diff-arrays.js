@@ -21,4 +21,7 @@
  *
  * diffArrays([1, 2, 3], [4, 5]); // [1, 2, 3, 4, 5]
  */
-export const diffArrays = (a = [], b = []) => {};
+export const diffArrays = (a = [], b = []) => {
+const combined = [...new Set([...a, ...b])];
+return combined.filter(item => !(a.includes(item) && b.includes(item)));
+};

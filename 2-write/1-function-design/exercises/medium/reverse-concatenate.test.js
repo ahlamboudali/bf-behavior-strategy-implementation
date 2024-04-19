@@ -1,5 +1,3 @@
-// #todo
-
 'use strict';
 
 /**
@@ -10,11 +8,67 @@
  */
 
 // -------- your solutions --------
+const reverseItemsAndJoin1 = (arr) => {
+    // copy arr
+    const arrCopy = [...arr];
+    const allAreStrings = arrCopy.every((item) => typeof item === 'string');
+    if (!allAreStrings) {
+        return '';
+    }
 
-for (const solution of [secretSolution]) {
-    describe(solution.name + ': _', () => {
-        describe('_', () => {
-            it('_', () => {});
+    return arrCopy.reduce(
+        (acc, item) => acc + item.split('').reverse().join(''),
+        '',
+    );
+};
+
+const reverseItemsAndJoin2 = (arr) => {
+    // copy arr
+    const arrCopy = [...arr];
+    const allAreStrings = arrCopy.every((item) => typeof item === 'string');
+    if (!allAreStrings) {
+        return '';
+    }
+
+    let newString = '';
+    for (let i = 0; i < arrCopy.length; i++) {
+        newString += arrCopy[i].split('').reverse().join('');
+    }
+
+    return newString;
+};
+
+const mySolutions = [reverseItemsAndJoin1, reverseItemsAndJoin2];
+for (const solution of mySolutions) {
+    describe(solution.name + 'reverseItemsAndJoin', () => {
+        test('should reverse and join strings in the array', () => {
+            const arr = ['hello', 'world'];
+            const result = solution(arr);
+            expect(result).toEqual('ollehdlrow');
+        });
+
+        test('should return an empty string if array contains non-strings', () => {
+            const arr = ['hello', 123, 'world'];
+            const result = solution(arr);
+            expect(result).toEqual('');
+        });
+
+        test('should return an empty string if the array is empty', () => {
+            const arr = [];
+            const result = solution(arr);
+            expect(result).toEqual('');
+        });
+
+        test('should handle an array with a single string', () => {
+            const arr = ['hello'];
+            const result = solution(arr);
+            expect(result).toEqual('olleh');
+        });
+
+        test('should handle an array with multiple empty strings', () => {
+            const arr = ['', '', ''];
+            const result = solution(arr);
+            expect(result).toEqual('');
         });
     });
 }
